@@ -14,6 +14,8 @@ import BookDataService from "../services/book.services";
 const AddBook = ({ id, setBookId }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [date, setDate] = useState("");
+  const [file, setFile] = useState("");
   const [status, setStatus] = useState("Active");
   const [flag, setFlag] = useState(true);
   const [message, setMessage] = useState({
@@ -34,6 +36,8 @@ const AddBook = ({ id, setBookId }) => {
     const newBook = {
       title,
       author,
+      date,
+      file,
       status,
     };
     console.log(newBook);
@@ -65,6 +69,8 @@ const AddBook = ({ id, setBookId }) => {
 
     setTitle("");
     setAuthor("");
+    setDate("");
+    setFile("");
   };
 
   const editHandler = async () => {
@@ -78,6 +84,8 @@ const AddBook = ({ id, setBookId }) => {
       );
       setTitle(docSnap.data().title);
       setAuthor(docSnap.data().author);
+      setDate(docSnap.data().date);
+      setFile(docSnap.data().file);
       setStatus(docSnap.data().status);
     } catch (err) {
       setMessage({
@@ -148,30 +156,70 @@ const AddBook = ({ id, setBookId }) => {
               />
             </InputGroup>
           </Form.Group>
+
+          <Form.Group
+            className="mb-3"
+            controlId="formBookAuthor"
+          >
+            <InputGroup>
+              <InputGroup.Text id="formBookAuthor">
+                C
+              </InputGroup.Text>
+              <Form.Control
+                type="text"
+                placeholder="Submision Date"
+                value={date}
+                onChange={(e) =>
+                  setDate(e.target.value)
+                }
+              />
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Group
+            className="mb-3"
+            controlId="formBookAuthor"
+          >
+            <InputGroup>
+              <InputGroup.Text id="formBookAuthor">
+                D
+              </InputGroup.Text>
+              <Form.Control
+                type="text"
+                placeholder="Upload Task"
+                value={file}
+                onChange={(e) =>
+                  setFile(e.target.value)
+                }
+              />
+            </InputGroup>
+          </Form.Group>
           <ButtonGroup
             aria-label="Basic example"
             className="mb-3"
           >
-            <Button
-              disabled={flag}
-              variant="success"
-              onClick={(e) => {
-                setStatus("Active");
-                setFlag(true);
-              }}
-            >
-              Active
-            </Button>
-            <Button
-              variant="danger"
-              disabled={!flag}
-              onClick={(e) => {
-                setStatus("Not Active");
-                setFlag(false);
-              }}
-            >
-              Not Active
-            </Button>
+            <div className="center">
+              <Button
+                disabled={flag}
+                variant="light"
+                onClick={(e) => {
+                  setStatus("Active");
+                  setFlag(true);
+                }}
+              >
+                Active
+              </Button>
+              <Button
+                variant="dark"
+                disabled={!flag}
+                onClick={(e) => {
+                  setStatus("Not Active");
+                  setFlag(false);
+                }}
+              >
+                Not Active
+              </Button>
+            </div>
           </ButtonGroup>
           <div className="d-grid gap-2">
             <Button

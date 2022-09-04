@@ -28,7 +28,11 @@ function App() {
       >
         <Container>
           <Navbar.Brand href="#home">
-            EduTech App
+            <img
+              className="Header-logo"
+              src="/logo.png"
+              alt="Logo"
+            />
           </Navbar.Brand>
         </Container>
       </Navbar>
