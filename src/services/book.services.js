@@ -10,19 +10,22 @@ import {
   doc,
 } from "firebase/firestore";
 
-const bookCollectionRef = collection(db, "books");
+const bookCollectionRef = collection(
+  db,
+  "Assignments"
+);
 class BookDataService {
   addBooks = (newBook) => {
     return addDoc(bookCollectionRef, newBook);
   };
 
   updateBook = (id, updatedBook) => {
-    const bookDoc = doc(db, "books", id);
+    const bookDoc = doc(db, "Assignments", id);
     return updateDoc(bookDoc, updatedBook);
   };
 
   deleteBook = (id) => {
-    const bookDoc = doc(db, "books", id);
+    const bookDoc = doc(db, "Assignments", id);
     return deleteDoc(bookDoc);
   };
 
@@ -31,7 +34,7 @@ class BookDataService {
   };
 
   getBook = (id) => {
-    const bookDoc = doc(db, "books", id);
+    const bookDoc = doc(db, "Assignments", id);
     return getDoc(bookDoc);
   };
 }

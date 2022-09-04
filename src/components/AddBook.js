@@ -14,8 +14,7 @@ import BookDataService from "../services/book.services";
 const AddBook = ({ id, setBookId }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [status, setStatus] =
-    useState("Available");
+  const [status, setStatus] = useState("Active");
   const [flag, setFlag] = useState(true);
   const [message, setMessage] = useState({
     error: false,
@@ -157,21 +156,21 @@ const AddBook = ({ id, setBookId }) => {
               disabled={flag}
               variant="success"
               onClick={(e) => {
-                setStatus("Available");
+                setStatus("Active");
                 setFlag(true);
               }}
             >
-              Available
+              Active
             </Button>
             <Button
               variant="danger"
               disabled={!flag}
               onClick={(e) => {
-                setStatus("Not Available");
+                setStatus("Not Active");
                 setFlag(false);
               }}
             >
-              Not Available
+              Not Active
             </Button>
           </ButtonGroup>
           <div className="d-grid gap-2">
